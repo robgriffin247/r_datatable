@@ -2,6 +2,10 @@ Data.table
 ================
 <em style='color:#00508060;'>November 17, 2023</em>
 
+<style>
+body{font-family: monospace !important;}
+</style>
+
 - Example data
 
 ``` r
@@ -37,30 +41,25 @@ The `order()` function returns the numerical index value of elements
 after sorting the data. For example, with the vector
 `acb <- c('a', 'c', 'b')` we get `1 3 2` when we execute `order(acb)`.
 
-<details>
-<summary>
-Return a data.table sorted by a single variable in <em>ascending</em>
-order:
-</summary>
+##### Return a data.table sorted by a single variable in <em>ascending</em> order:
 
 ``` r
-  dt_starwars[order(height)]
-  ##                      name height mass hair_color  skin_color eye_color
-  ##  1:                  Yoda     66   17      white       green     brown
-  ##  2:         Ratts Tyerell     79   15       none  grey, blue   unknown
-  ##  3: Wicket Systri Warrick     88   20      brown       brown     brown
-  ##  4:              Dud Bolt     94   45       none  blue, grey    yellow
-  ##  5:                 R2-D2     96   32       <NA> white, blue       red
-  ## ---                                                                   
-  ## 83:                  Finn     NA   NA      black        dark      dark
-  ## 84:                   Rey     NA   NA      brown       light     hazel
-  ## 85:           Poe Dameron     NA   NA      brown       light     brown
-  ## 86:                   BB8     NA   NA       none        none     black
-  ## 87:        Captain Phasma     NA   NA    unknown     unknown   unknown
-  ## 8 variables not shown: [birth_year, sex, gender, homeworld, species, films, vehicles, starships]
+dt_starwars[order(height)]
+##                      name height mass hair_color  skin_color eye_color
+##  1:                  Yoda     66   17      white       green     brown
+##  2:         Ratts Tyerell     79   15       none  grey, blue   unknown
+##  3: Wicket Systri Warrick     88   20      brown       brown     brown
+##  4:              Dud Bolt     94   45       none  blue, grey    yellow
+##  5:                 R2-D2     96   32       <NA> white, blue       red
+## ---                                                                   
+## 83:                  Finn     NA   NA      black        dark      dark
+## 84:                   Rey     NA   NA      brown       light     hazel
+## 85:           Poe Dameron     NA   NA      brown       light     brown
+## 86:                   BB8     NA   NA       none        none     black
+## 87:        Captain Phasma     NA   NA    unknown     unknown   unknown
+## 8 variables not shown: [birth_year, sex, gender, homeworld, species, films, vehicles, starships]
 ```
 
-</details>
 <details>
 <summary>
 Return a data.table sorted by a single variable in <em>descending</em>
@@ -109,14 +108,17 @@ Return a data.table sorted by <em>multiple</em> variables:
 
 </details>
 
-#### Filter by position
+#### Subset by numerical index
 
-The above examples essentially just return a reordered data.table, with
-the order of row being given by the `order()` function. The `order(acb)`
-statement returned `1 3 2`. When passed as `i` in `dt[i]`, that would
-return the first row, then the third row and then the second row. Note,
-you can generate a sequence of integers with `:`, while multiple values
-can be concatenated into a vector using the `c()` function.
+The sorting examples above essentially just return a reordered
+data.table, with the order of row being given by the `order()` function.
+The `order(acb)` statement returned `1 3 2`. When passed as `i` in
+`dt[i]`, that would return the first row, then the third row and then
+the second row. We can use vectors of numerical values to subset a
+dataset.
+
+Note, you can generate a sequence of integers with `:`, while multiple
+values can be concatenated into a vector using the `c()` function.
 
 <details>
 <summary>
@@ -187,7 +189,7 @@ square braces — `dt[i][i]`.
 
 <details>
 <summary>
-Return specific rows:
+Return top *n* observations:
 </summary>
 
 ``` r
@@ -208,7 +210,6 @@ Return specific rows:
 
 ### To add:
 
-- filter (numeric); extend on sort to get top n
 - filter (logical); logical operators
 - select; `dt[, j]`, `.SD`
 - assignment

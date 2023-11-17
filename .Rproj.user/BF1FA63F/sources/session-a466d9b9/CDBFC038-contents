@@ -3,7 +3,9 @@ title: "Data.table"
 output: github_document
 date: "<em style='color:#00508060;'>`r Sys.setlocale('LC_ALL','English'); format(Sys.time(), '%B %d, %Y')`</em>"
 ---
-
+<style>
+body{font-family: monospace !important;}
+</style>
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=TRUE, results='hold', collapse=TRUE)
 options(datatable.print.nrows=6, datatable.print.trunc.cols=TRUE)
@@ -27,14 +29,13 @@ dt_starwars
 
 A data.table that has been sorted on one or more variables, in ascending or descending order, can be returned by using the `order()` function. The `order()` function returns the numerical index value of elements after sorting the data. For example, with the vector `acb <- c('a', 'c', 'b')` we get `1 3 2` when we execute `order(acb)`.
 
-<details>
-  <summary>
-    Return a data.table sorted by a single variable in <em>ascending</em> order:
-  </summary>
-  ```{r}
-  dt_starwars[order(height)]
-  ```
-</details>
+##### Return a data.table sorted by a single variable in <em>ascending</em> order:
+
+```{r}
+dt_starwars[order(height)]
+```
+
+
 
 <details>
   <summary>
@@ -54,9 +55,11 @@ A data.table that has been sorted on one or more variables, in ascending or desc
   ```
 </details>
 
-#### Filter by position
+#### Subset by numerical index
 
-The above examples essentially just return a reordered data.table, with the order of row being given by the `order()` function. The `order(acb)` statement returned `1 3 2`. When passed as `i` in `dt[i]`, that would return the first row, then the third row and then the second row. Note, you can generate a sequence of integers with `:`, while multiple values can be concatenated into a vector using the `c()` function.
+The sorting examples above essentially just return a reordered data.table, with the order of row being given by the `order()` function. The `order(acb)` statement returned `1 3 2`. When passed as `i` in `dt[i]`, that would return the first row, then the third row and then the second row. We can use vectors of numerical values to subset a dataset.
+
+Note, you can generate a sequence of integers with `:`, while multiple values can be concatenated into a vector using the `c()` function.
 
 <details>
   <summary>
@@ -102,7 +105,7 @@ Having learnt how to sort a data.table, and how to filter to the first *n* rows,
 
 <details>
   <summary>
-    Return specific rows:
+    Return top *n* observations:
   </summary>
   ```{r}
   # Top 5 tallest characters
@@ -117,7 +120,6 @@ Having learnt how to sort a data.table, and how to filter to the first *n* rows,
 
 ### To add:
 
-- filter (numeric); extend on sort to get top n
 - filter (logical); logical operators
 - select; `dt[, j]`, `.SD`
 - assignment
