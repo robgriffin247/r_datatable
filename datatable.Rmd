@@ -1,0 +1,151 @@
+---
+title: "Data.table"
+output: github_document
+date: "<em style='color:#00508060;'>`r Sys.setlocale('LC_ALL','English'); format(Sys.time(), '%B %d, %Y')`</em>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, results='hold', collapse=TRUE)
+options(datatable.print.nrows=6, datatable.print.trunc.cols=TRUE)
+```
+
+- Example data
+
+```{r}
+library(data.table)
+
+dt_starwars <- data.table(dplyr::starwars)
+dt_starwars
+```
+
+- `dt[i, j, by]` For SQL users: `from[where, select, group by]`
+- Vectors & data types, lists, data frames, data tables
+
+## Actions on rows: `dt[i]`
+
+#### Sorting with `order(...)`
+
+A data.table that has been sorted on one or more variables, in ascending or descending order, can be returned by using the `order()` function. The `order()` function returns the numerical index value of elements after sorting the data. For example, with the vector `acb <- c('a', 'c', 'b')` we get `1 3 2` when we execute `order(acb)`.
+
+<details>
+  <summary>
+    Return a data.table sorted by a single variable in <em>ascending</em> order:
+  </summary>
+  ```{r}
+  dt_starwars[order(height)]
+  ```
+</details>
+
+<details>
+  <summary>
+    Return a data.table sorted by a single variable in <em>descending</em> order:
+  </summary>
+  ```{r}
+  dt_starwars[order(-height)]
+  ```
+</details>
+
+<details>
+  <summary>
+    Return a data.table sorted by <em>multiple</em> variables:
+  </summary>
+  ```{r}
+  dt_starwars[order(sex, height)]
+  ```
+</details>
+
+#### Filter by position
+
+The above examples essentially just return a reordered data.table, with the order of row being given by the `order()` function. The `order(acb)` statement returned `1 3 2`. When passed as `i` in `dt[i]`, that would return the first row, then the third row and then the second row. Note, you can generate a sequence of integers with `:`, while multiple values can be concatenated into a vector using the `c()` function.
+
+<details>
+  <summary>
+    Return the first row:
+  </summary>
+  ```{r}
+  dt_starwars[1]
+  ```
+</details>
+
+<details>
+  <summary>
+    Return the first n rows:
+  </summary>
+  ```{r}
+  dt_starwars[1:5]
+  ```
+</details>
+
+<details>
+  <summary>
+    Return specific rows:
+  </summary>
+  ```{r}
+  dt_starwars[c(12, 19, 22)]
+  ```
+</details>
+
+
+<details>
+  <summary>
+    Return the last row with .N:
+  </summary>
+  
+  This uses a data.table __special character__ of `.N` which means the number of rows in the data.table. It is equivalent to `nrow(dt)`. More on special characters later!
+  
+  ```{r}
+  dt_starwars[.N]
+  ```
+</details>
+
+Having learnt how to sort a data.table, and how to filter to the first *n* rows, we can combine the two processes by adding a second set of square braces &mdash; `dt[i][i]`.
+
+<details>
+  <summary>
+    Return specific rows:
+  </summary>
+  ```{r}
+  # Top 5 tallest characters
+  dt_starwars[order(-height)][1:5]
+  ```
+</details>
+
+
+
+
+-----
+
+### To add:
+
+- filter (numeric); extend on sort to get top n
+- filter (logical); logical operators
+- select; `dt[, j]`, `.SD`
+- assignment
+- conditional assignment (`dt[, ifelse(...)]` and `dt[i, j]`)
+- compute; `x(j)`
+- group by; `by` and `keyby`
+- special characters; `.SD, .N, .I ...`
+- chaining
+
+<!--
+
+
+#### Subset
+
+###### Logical/Boolean
+
+```{r}
+dt_starwars[height>200]
+dt_starwars[sex=='Male' & height>200]
+dt_starwars[height>=200 & height<=300]
+```
+
+###### Positional
+
+```{r}
+dt_starwars[1]
+dt_starwars[1:5]
+dt_starwars[c(1, 10)]
+```
+
+-->
