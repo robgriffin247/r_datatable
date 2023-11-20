@@ -1,9 +1,9 @@
 {
     "id": "CDBFC038",
-    "path": "~/github/personal/r_datatable/datatable.Rmd",
-    "project_path": "datatable.Rmd",
+    "path": "~/github/personal/r_datatable/README.Rmd",
+    "project_path": "README.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "696865370",
     "contents": "",
     "dirty": false,
     "created": 1700235206271.0,
@@ -21,7 +21,7 @@
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1700468384147,
+    "last_content_update": 1700468384,
     "read_only": false,
     "read_only_alternatives": []
 }
