@@ -3,7 +3,7 @@
     "path": "~/github/personal/r_datatable/datatable.Rmd",
     "project_path": "datatable.Rmd",
     "type": "r_markdown",
-    "hash": "294731548",
+    "hash": "0",
     "contents": "",
     "dirty": false,
     "created": 1700235206271.0,
@@ -12,15 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "41,5",
-        "scrollLine": "30"
+        "cursorPosition": "117,0",
+        "scrollLine": "105",
+        "last_setup_crc32": "a466d9b9d4910807"
     },
     "folds": "",
-    "lastKnownWriteTime": 1700249362,
+    "lastKnownWriteTime": 1700468384,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1700249362947,
+    "last_content_update": 1700468384147,
     "read_only": false,
     "read_only_alternatives": []
 }
