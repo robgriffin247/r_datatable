@@ -1,4 +1,4 @@
-Data.table
+Fundamentals of the data.table
 ================
 <em style='color:#00508060;'>November 20, 2023</em>
 
@@ -8,9 +8,15 @@ Data.table
 - Vectors & data types, lists, data frames, data tables
 - creating/converting data.tables -->
 
-## Actions on rows: `dt[i]`
+### Actions on rows
 
-#### Sorting with `order(...)`
+With the data.table syntax, we describe and perform actions on rows,
+such as sorting or subsetting data, as `i` in `dt[i]`.
+
+<details>
+<summary>
+Sorting
+</summary>
 
 A data.table that has been sorted on one or more variables, in ascending
 or descending order, can be returned by using the `order()` function.
@@ -33,7 +39,11 @@ dt_starwars[order(height)]
 ## 8 variables not shown: [birth_year, sex, gender, homeworld, species, films, vehicles, starships]
 ```
 
-#### Subset by numerical index
+</details>
+<details>
+<summary>
+Subset by numerical index
+</summary>
 
 The second common action to be performed is subsetting data — reducing a
 dataset to a set of observations that meet a criteria. That criteria
@@ -104,7 +114,11 @@ dt_starwars[order(-height)][1:5]
 ## 6 variables not shown: [gender, homeworld, species, films, vehicles, starships]
 ```
 
-### Subset on condition
+</details>
+<details>
+<summary>
+Subset by condition
+</summary>
 
 Subsets can also be returned to give the observations that meet a
 certain logical criteria. For example, all characters over 200 cm tall,
@@ -154,7 +168,9 @@ dt_starwars[height<180 & homeworld %in% c('Naboo', 'Tatooine')]
 ## 7 variables not shown: [sex, gender, homeworld, species, films, vehicles, starships]
 ```
 
-### `dt[i]` summary
+</details>
+
+#### Summary of `dt[i]`
 
 - Actions on rows are performed as `i` in `dt[i]`
 - This is useful for returning sorted data.tables and data.tables

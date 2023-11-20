@@ -1,5 +1,5 @@
 ---
-title: "Data.table"
+title: "Fundamentals of the data.table"
 output: github_document
 date: "<em style='color:#00508060;'>`r Sys.setlocale('LC_ALL','English'); format(Sys.time(), '%B %d, %Y')`</em>"
 ---
@@ -22,10 +22,12 @@ dt_starwars <- data.table(dplyr::starwars)
 
 
 
+### Actions on rows
 
-## Actions on rows: `dt[i]`
+With the data.table syntax, we describe and perform actions on rows, such as sorting or subsetting data, as `i` in `dt[i]`.
 
-#### Sorting with `order(...)`
+<details>
+<summary>Sorting</summary>
 
 A data.table that has been sorted on one or more variables, in ascending or descending order, can be returned by using the `order()` function. 
 
@@ -39,9 +41,10 @@ A data.table that has been sorted on one or more variables, in ascending or desc
 dt_starwars[order(height)]
 ```
 
+</details>
 
 
-#### Subset by numerical index
+<details><summary>Subset by numerical index</summary>
 
 The second common action to be performed is subsetting data &mdash; reducing a dataset to a set of observations that meet a criteria. That criteria might be as simple as position. For example, you could take an ordered dataset and return the top five observations. This is done by passing a vector of integers as `i`. Vectors are the basic data structure in R and are created using the concatenate function, `c()` &mdash; e.g. `c(1, 2, 3)`. Individual numbers can also be passed without the `c()` function, while a sequence of integers can also be generated using the `:` operator (and the `c()` function omitted), e.g. `1:3` is equivalent to `c(1, 2, 3)`.
 
@@ -77,8 +80,10 @@ Finally, you may have sorted a data.table to see which observations are the top 
 dt_starwars[order(-height)][1:5]
 ```
 
+</details>
 
-### Subset on condition
+
+<details><summary>Subset by condition</summary>
 
 Subsets can also be returned to give the observations that meet a certain logical criteria. For example, all characters over 200 cm tall, or all characters from Naboo. Such conditional subsetting is done using logical operators. In R, the key logical operators are:
 
@@ -108,13 +113,13 @@ With these, you can now return data to meet a certain criteria:
 # Exmaple: return all characters under 180 cm tall from Naboo and Tatooine 
 dt_starwars[height<180 & homeworld %in% c('Naboo', 'Tatooine')]
 ```
+</details>
 
-### `dt[i]` summary
+#### Summary of `dt[i]`
 
 - Actions on rows are performed as `i` in `dt[i]`
 - This is useful for returning sorted data.tables and data.tables containing a subset of the original data
 - Logical operators can be used to subset to data meeting a certain criteria
-
 
 
 
