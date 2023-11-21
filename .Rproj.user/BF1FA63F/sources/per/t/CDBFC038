@@ -3,7 +3,7 @@
     "path": "~/github/personal/r_datatable/README.Rmd",
     "project_path": "README.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "813080769",
     "contents": "",
     "dirty": false,
     "created": 1700235206271.0,
@@ -12,16 +12,16 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "1,38",
-        "scrollLine": "0",
+        "cursorPosition": "71,25",
+        "scrollLine": "58",
         "last_setup_crc32": "a466d9b9d4910807"
     },
     "folds": "",
-    "lastKnownWriteTime": 1700472416,
+    "lastKnownWriteTime": 1700472505,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1700472416848,
+    "last_content_update": 1700472505714,
     "read_only": false,
     "read_only_alternatives": []
 }

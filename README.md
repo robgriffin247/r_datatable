@@ -88,7 +88,7 @@ dt_starwars[.N]
 ## 6 variables not shown: [gender, homeworld, species, films, vehicles, starships]
 ```
 
-##### Chaining
+<strong>Chaining</strong>
 
 Finally, you may have sorted a data.table to see which observations are
 the top *n*, e.g. the five tallest characters. You can do this by first

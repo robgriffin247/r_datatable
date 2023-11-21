@@ -69,7 +69,7 @@ dt_starwars[.N]
 ```
 
 
-##### Chaining
+<strong>Chaining</strong>
 
 Finally, you may have sorted a data.table to see which observations are the top *n*, e.g. the five tallest characters. You can do this by first storing the sorted table in the working environment as `dt_starwars_sorted <- dt_starwars[order(-height)]`. But you can also avoid storing variables unnecessarily by acting directly on the returned data.table, using something called __chaining__. This allows multiple data.table statements to be joined together and executed in sequence to give a single return. It is done by adding more square braces &mdash; `dt[][][]...[]`.
 
