@@ -1,7 +1,8 @@
 Fundamentals of the data.table
 ================
-<em style='color:#00508060;'>November 20, 2023</em>
+<em style='color:#00508060;'>November 24, 2023</em>
 
+<style>body{background-color: #202029; color:#aaaaaa;</style>
 <!--
 - Example data
 - `dt[i, j, by]` For SQL users: `from[where, select, group by]`
@@ -72,11 +73,11 @@ dt_starwars[1:5]
 ## 7 variables not shown: [sex, gender, homeworld, species, films, vehicles, starships]
 ```
 
-The last example, using `nrow()` to return the last row can be rewritten
-to use one of data.tables special characters. There are a few useful
-special characters and I will cover these more later. For now, the value
-returned by `nrow(dt)` is equal to `.N`, so you can rewrite the last
-expression as:
+The last example, using `nrow()` to return the last row, can be
+rewritten to use one of data.tables special characters. There are a few
+useful special characters and I will cover these more later. For now,
+the value returned by `nrow(dt)` is equal to `.N`, so you can rewrite
+the last expression as:
 
 - Return the last row using the `.N` special character: `dt[.N]`
 
@@ -178,6 +179,57 @@ dt_starwars[height<180 & homeworld %in% c('Naboo', 'Tatooine')]
 - Logical operators can be used to subset to data meeting a certain
   criteria
 
+------------------------------------------------------------------------
+
+### Actions on columns
+
+Following the data.table syntax, we describe and perform actions on
+columns, such as selecting, modifying and processing variables, as `j`
+in `dt[, j]`. Leaving the `i` empty returns all rows.
+
+<details>
+<summary>
+Selecting variables
+</summary>
+
+An important thing to note is that if `j` outputs a vector, you will get
+a vector returned, while a `j` that returns a list, you will get a
+data.table in return. Remember that a vector is returned by `c()`, and
+that a single value is automatically handled as a vector by R, while
+`list()` (obviously) returns a list.
+
+``` r
+# Return character names as vector
+dt_starwars[, name]
+# ... is equal to dt_starwars[, c(name)]
+```
+
+    ##  [1] "Luke Skywalker"        "C-3PO"                 "R2-D2"                
+    ##  [4] "Darth Vader"           "Leia Organa"           "Owen Lars"            
+    ##  [7] "Beru Whitesun lars"    "R5-D4"                 "Biggs Darklighter"    
+    ## [10] "Obi-Wan Kenobi"        "Anakin Skywalker"      "Wilhuff Tarkin"       
+    ## [13] "Chewbacca"             "Han Solo"              "Greedo"               
+    ## [16] "Jabba Desilijic Tiure" "Wedge Antilles"        "Jek Tono Porkins"     
+    ## [19] "Yoda"                  "Palpatine"
+
+``` r
+# Return character names as data.table
+dt_starwars[, list(name)]
+##               name
+##  1: Luke Skywalker
+##  2:          C-3PO
+##  3:          R2-D2
+## ---               
+## 85:            BB8
+## 86: Captain Phasma
+## 87:  Padmé Amidala
+```
+
+When working inside a data.table, you can use the data.table function
+`.()` as a synonym for `list()`, so the above example can be rewritten
+as `dt_starwars[, .(name)]`.
+
+</details>
 <!-- 
 &#10;### To add:
 &#10;- select; `dt[, j]`, `.SD`

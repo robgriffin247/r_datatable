@@ -1,2 +1,8 @@
+"0","library(data.table)"
+"2","data.table 1.14.8 using 4 threads (see ?getDTthreads).  Latest news: r-datatable.com
+"
 "0","knitr::opts_chunk$set(echo=TRUE, results='hold', collapse=TRUE)"
 "0","options(datatable.print.nrows=5, datatable.print.trunc.cols=TRUE, datatable.print.topn=3)"
+"0",""
+"0","# Generate data for examples"
+"0","dt_starwars <- data.table(dplyr::starwars)"

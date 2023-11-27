@@ -3,7 +3,7 @@ title: "Fundamentals of the data.table"
 output: github_document
 date: "<em style='color:#00508060;'>`r Sys.setlocale('LC_ALL','English'); format(Sys.time(), '%B %d, %Y')`</em>"
 ---
-
+<style>body{background-color: #202029; color:#aaaaaa;</style>
 
 ```{r setup, include=FALSE}
 library(data.table)
@@ -59,7 +59,7 @@ dt_starwars[1:5]
 ```
 
 
-The last example, using `nrow()` to return the last row can be rewritten to use one of data.tables special characters. There are a few useful special characters and I will cover these more later. For now, the value returned by `nrow(dt)` is equal to `.N`, so you can rewrite the last expression as:
+The last example, using `nrow()` to return the last row, can be rewritten to use one of data.tables special characters. There are a few useful special characters and I will cover these more later. For now, the value returned by `nrow(dt)` is equal to `.N`, so you can rewrite the last expression as:
 
 - Return the last row using the `.N` special character: `dt[.N]`
 
@@ -122,7 +122,36 @@ dt_starwars[height<180 & homeworld %in% c('Naboo', 'Tatooine')]
 - Logical operators can be used to subset to data meeting a certain criteria
 
 
+-------
 
+### Actions on columns
+
+Following the data.table syntax, we describe and perform actions on columns, such as selecting, modifying and processing variables, as `j` in `dt[, j]`. Leaving the `i` empty returns all rows. 
+
+<details><summary>Selecting variables</summary>
+
+An important thing to note is that if `j` outputs a vector, you will get a vector returned, while a `j` that returns a list, you will get a data.table in return. Remember that a vector is returned by `c()`, and that a single value is automatically handled as a vector by R, while `list()` (obviously) returns a list.
+
+```{r, eval=FALSE}
+# Return character names as vector
+dt_starwars[, name]
+# ... is equal to dt_starwars[, c(name)]
+```
+
+```{r, echo=FALSE}
+dt_starwars[1:20, name]
+```
+
+
+```{r}
+# Return character names as data.table
+dt_starwars[, list(name)]
+```
+
+When working inside a data.table, you can use the data.table function `.()` as a synonym for `list()`, so the above example can be rewritten as `dt_starwars[, .(name)]`.
+ 
+
+</details>
 
 <!-- 
 
